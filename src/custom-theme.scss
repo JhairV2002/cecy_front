@@ -1,0 +1,112 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+// primary pallete
+
+$primary-palette: (
+  50: #e2f1fd,
+  100: #b9dcfa,
+  200: #8ec8f7,
+  300: #61b1f3,
+  400: #3fa1f1,
+  500: #1b93ee,
+  600: #1886e1,
+  700: #1276ce,
+  800: #0c64bc,
+  900: #02459d,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: #ecf0f1,
+    700: #ecf0f1,
+    800: #ecf0f1,
+    900: #ecf0f1,
+  ),
+);
+
+$accent-palette: (
+  50: #f0e6fa,
+  100: #d6c1f2,
+  200: #bc97ea,
+  300: #a16ae2,
+  400: #8b46dc,
+  500: #7418d4,
+  600: #6a12ce,
+  700: #5b02c6,
+  800: #4c00c0,
+  900: #3000b7,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: #ecf0f1,
+    800: #ecf0f1,
+    900: #ecf0f1,
+  ),
+);
+
+$warn-palette: (
+  50: #fce5f1,
+  100: #f8bedc,
+  200: #f793c4,
+  300: #f666ac,
+  400: #f64197,
+  500: #f81182,
+  600: #e6127d,
+  700: #ce1276,
+  800: #b81171,
+  900: #910e67,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: #ecf0f1,
+    800: #ecf0f1,
+    900: #ecf0f1,
+  ),
+);
+$cecy_front-primary: mat.define-palette($primary-palette, 800);
+$cecy_front-accent: mat.define-palette($accent-palette, 700);
+
+// The warn palette is optional (defaults to red).
+$cecy_front-warn: mat.define-palette($warn-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$cecy_front-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $cecy_front-primary,
+      accent: $cecy_front-accent,
+      warn: $cecy_front-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($cecy_front-theme);
